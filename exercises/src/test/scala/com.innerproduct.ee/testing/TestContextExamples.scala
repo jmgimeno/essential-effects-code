@@ -1,5 +1,6 @@
 package com.innerproduct.ee.testing
 
+/*
 import cats.effect._
 import cats.effect.laws.util.TestContext
 import java.util.concurrent.TimeoutException
@@ -42,3 +43,4 @@ class TestContextExamples extends FunSuite with EffectTesting {
     assertEquals(f.value, Some(Success(Left(()))))
   }
 }
+*/

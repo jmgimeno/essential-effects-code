@@ -1,7 +1,7 @@
 package com.innerproduct.ee.coordination
 
 import cats.effect._
-import cats.effect.concurrent._
+//import cats.effect.concurrent._
 import cats.implicits._
 
 trait CountdownLatch {
@@ -10,7 +10,7 @@ trait CountdownLatch {
 }
 
 object CountdownLatch {
-  def apply(n: Long)(implicit cs: ContextShift[IO]): IO[CountdownLatch] =
+  def apply(n: Long)(implicit cs: Spawn[IO]): IO[CountdownLatch] =
     for {
       whenDone <- Deferred[IO, Unit]
       state <- Ref[IO].of[State](Outstanding(n, whenDone))
@@ -27,7 +27,7 @@ object CountdownLatch {
           case Outstanding(n, whenDone) =>
             Outstanding(n - 1, whenDone) -> IO.unit
           case Done() => Done() -> IO.unit
-        }.flatten
+        }.flatten.void
     }
 
   sealed trait State

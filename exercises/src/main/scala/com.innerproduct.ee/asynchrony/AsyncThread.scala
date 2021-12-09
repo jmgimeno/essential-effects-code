@@ -13,7 +13,7 @@ object AsyncThread extends IOApp {
     } yield ExitCode.Success
 
   val effect: IO[String] =
-    IO.async { cb =>
+    IO.async_ { cb =>
       ExecutionContext.global.execute {
         new Runnable {
           def run() = ???

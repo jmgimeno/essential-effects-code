@@ -1,7 +1,7 @@
 package com.innerproduct.ee.coordination
 
 import cats.effect._
-import cats.effect.concurrent.Ref
+//import cats.effect.concurrent.Ref
 import cats.implicits._
 import com.innerproduct.ee.debug._
 

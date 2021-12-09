@@ -21,7 +21,7 @@ object EarlyRelease extends IOApp {
   lazy val configResource: Resource[IO, Config] = // <1>
     for {
       source <- sourceResource
-      config <- Resource.liftF(Config.fromSource(source)) // <2>
+      config <- Resource.eval(Config.fromSource(source)) // <2>
     } yield config
 
   lazy val sourceResource: Resource[IO, Source] =

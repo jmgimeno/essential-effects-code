@@ -16,6 +16,8 @@ object IOComposition extends App {
   val hw2: IO[Unit] =
     (hello, world).mapN((_, _) => ())
 
+  import cats.effect.unsafe.implicits.global
+
   hw1.unsafeRunSync() // <2>
   hw2.unsafeRunSync() // <3>
 }

@@ -67,7 +67,7 @@ sealed trait RetryPolicy {
     */
   def retry[A](
       io: IO[A]
-  )(implicit cs: ContextShift[IO], timer: Timer[IO]): IO[A] =
+  )(implicit cs: Spawn[IO], timer: Temporal[IO]): IO[A] =
     ???
 }
 

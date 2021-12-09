@@ -1,20 +1,20 @@
-ThisBuild / scalaVersion := "2.13.3"
+ThisBuild / scalaVersion := "2.13.7"
 ThisBuild / organization := "com.innerproduct"
 ThisBuild / version := "0.0.1-SNAPSHOT"
 ThisBuild / fork := true
 
-val CatsVersion = "2.2.0"
-val CatsEffectVersion = "2.2.0"
-val CatsTaglessVersion = "0.11"
-val CirceVersion = "0.13.0"
-val Http4sVersion = "0.21.4"
-val LogbackVersion = "1.2.3"
-val MunitVersion = "0.7.8"
+val CatsVersion = "2.7.0"
+val CatsEffectVersion = "3.3.0"
+val CatsTaglessVersion = "0.14.0"
+val CirceVersion = "0.14.1"
+val Http4sVersion = "0.23.7"
+val LogbackVersion = "1.2.7"
+val MunitVersion = "0.7.27"
 
 val commonSettings =
   Seq(
     addCompilerPlugin(
-      "org.typelevel" %% "kind-projector" % "0.11.1" cross CrossVersion.full
+      "org.typelevel" %% "kind-projector" % "0.13.2" cross CrossVersion.full
     ),
     libraryDependencies ++= Seq(
       "org.scalameta" %% "munit" % MunitVersion % Test
@@ -27,7 +27,8 @@ lazy val exercises = (project in file("exercises"))
   .settings(
     libraryDependencies ++= Seq(
       "org.typelevel" %% "cats-effect" % CatsEffectVersion,
-      "org.typelevel" %% "cats-effect-laws" % CatsEffectVersion % Test
+      "org.typelevel" %% "cats-effect-laws" % CatsEffectVersion % Test,
+      "org.typelevel" %% "cats-effect-testkit" % CatsEffectVersion % Test
     ),
     // remove fatal warnings since exercises have unused and dead code blocks
     scalacOptions --= Seq(
